@@ -8,10 +8,9 @@ using namespace std;
 int balance = 0;
 int account_number;
 string name;
+ofstream myfile("Account_info.txt");
 
 void create_account() {
-
-    ofstream myfile("Account_info.txt");
   
     cout << "enter your account number" << endl;
     cin >> account_number;
@@ -21,19 +20,38 @@ void create_account() {
     cin >> balance; 
     myfile << "Account number is..." << account_number << endl;
     myfile << "Name of the user is..." << name << endl;
-    myfile << "User's balance is..." << balance << endl;
+    myfile << "User's starting balance is..." << balance << endl;
+   
 
 
 }
 
-void balance_enquiry() {  
+void balance_enquiry() {
     if (balance == 0) {
         cout << "You have no money on your account..." << endl;
     }
-    else {
-        cout << "Account Balance is..." << balance << endl;
+    else if(balance<100 && balance>0) {
+        cout << "Your account balance is..." << balance << " " << "which is very low and if you do not add more money, your account will be blocked" << endl;
     }
-
+    else if (balance > 100 && balance<=1000) {
+        cout << "Your account balance is..." << balance << endl;
+    }
+    else if (balance>1000 && balance<=2000) {
+        balance = balance + 100;
+      cout << "Account Balance is..." << balance << " " <<" with 100RS bonus"<< endl;
+    }
+    else if (balance > 2000 && balance <= 3000) {
+        balance = balance + 200;
+        cout << "Account Balance is..." << balance << " " << "with 200RS bonus" << endl;
+    }
+    else if (balance > 3000 && balance <= 4000) {
+        balance = balance + 300;
+        cout << "Account Balance is..." << balance << " " << "with 300RS bonus" << endl;
+    }
+    else if (balance > 4000) {
+        balance = balance + 400;
+        cout << "Account Balance is..." << balance << " " << "with 400RS bonus" << endl;
+    }
 }
 
 void deposit() {
@@ -41,7 +59,7 @@ void deposit() {
     int amount;
     cin >> amount;
     balance = balance + amount;
-
+    
 }
 
 
@@ -50,6 +68,7 @@ void draw() {
     int amount;
     cin >> amount;
     balance = balance - amount;
+    
 }
 
 
@@ -105,6 +124,8 @@ int main() {
             break;
 
         case 8:
+            myfile << "User's current balance is..." << balance << endl;
+        
             mybool = false; 
             cout << "THANK YOU FOR VISITING THE BANK MANAGER" << endl;
                 break;

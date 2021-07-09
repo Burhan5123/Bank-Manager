@@ -1,3 +1,4 @@
-Account number is...3114242
+Account number is...424242
 Name of the user is...burhan
-User's balance is...22424
+User's starting balance is...3100
+User's current balance is...2900
